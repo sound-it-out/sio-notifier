@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7B6AA0C0-59A2-431A-B563-03C141DBCD56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{63E4107D-5A02-4ECB-8428-E9FAB4F87579}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E352842F-F5D2-4A78-9AC5-46DCF282E1F7}"
+	ProjectSection(SolutionItems) = preProject
+		Placeholder.txt = Placeholder.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B47FE227-DA8F-48ED-AAD7-3EBBE36E432E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
+		.github\PULL_REQUEST_TEMPLATE.md = .github\PULL_REQUEST_TEMPLATE.md
+		README.md = README.md
+		.github\workflows\release.yml = .github\workflows\release.yml
+		.github\weekly-digest.yml = .github\weekly-digest.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SIO.Testing", "src\SIO.Testing\SIO.Testing.csproj", "{481D34A2-7CC5-4EBE-9A46-15A921BD68EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SIO.Infrastructure", "src\SIO.Infrastructure\SIO.Infrastructure.csproj", "{5D490462-F901-4DAA-91E7-154CA234FDC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SIO.Migrations", "src\SIO.Migrations\SIO.Migrations.csproj", "{71D06248-2C23-4543-83D4-09E204B619E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIO.Notifier", "src\SIO.Notifier\SIO.Notifier.csproj", "{478ED716-4D32-43EE-ADD8-F26343C0DCD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIO.Domain", "src\SIO.Domain\SIO.Domain.csproj", "{B54ED4B3-B15C-4A9B-924F-8F9DF0BC57FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIO.Infrastructure.Azure", "src\SIO.Infrastructure.Azure\SIO.Infrastructure.Azure.csproj", "{264ACBDF-44DA-4EA7-AED1-E298BE725E03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{481D34A2-7CC5-4EBE-9A46-15A921BD68EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{481D34A2-7CC5-4EBE-9A46-15A921BD68EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{481D34A2-7CC5-4EBE-9A46-15A921BD68EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{481D34A2-7CC5-4EBE-9A46-15A921BD68EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D490462-F901-4DAA-91E7-154CA234FDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D490462-F901-4DAA-91E7-154CA234FDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D490462-F901-4DAA-91E7-154CA234FDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D490462-F901-4DAA-91E7-154CA234FDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D06248-2C23-4543-83D4-09E204B619E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D06248-2C23-4543-83D4-09E204B619E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D06248-2C23-4543-83D4-09E204B619E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D06248-2C23-4543-83D4-09E204B619E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478ED716-4D32-43EE-ADD8-F26343C0DCD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478ED716-4D32-43EE-ADD8-F26343C0DCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478ED716-4D32-43EE-ADD8-F26343C0DCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478ED716-4D32-43EE-ADD8-F26343C0DCD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B54ED4B3-B15C-4A9B-924F-8F9DF0BC57FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B54ED4B3-B15C-4A9B-924F-8F9DF0BC57FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B54ED4B3-B15C-4A9B-924F-8F9DF0BC57FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B54ED4B3-B15C-4A9B-924F-8F9DF0BC57FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264ACBDF-44DA-4EA7-AED1-E298BE725E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264ACBDF-44DA-4EA7-AED1-E298BE725E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264ACBDF-44DA-4EA7-AED1-E298BE725E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264ACBDF-44DA-4EA7-AED1-E298BE725E03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{481D34A2-7CC5-4EBE-9A46-15A921BD68EF} = {7B6AA0C0-59A2-431A-B563-03C141DBCD56}
+		{5D490462-F901-4DAA-91E7-154CA234FDC1} = {7B6AA0C0-59A2-431A-B563-03C141DBCD56}
+		{71D06248-2C23-4543-83D4-09E204B619E9} = {7B6AA0C0-59A2-431A-B563-03C141DBCD56}
+		{478ED716-4D32-43EE-ADD8-F26343C0DCD2} = {7B6AA0C0-59A2-431A-B563-03C141DBCD56}
+		{B54ED4B3-B15C-4A9B-924F-8F9DF0BC57FD} = {7B6AA0C0-59A2-431A-B563-03C141DBCD56}
+		{264ACBDF-44DA-4EA7-AED1-E298BE725E03} = {7B6AA0C0-59A2-431A-B563-03C141DBCD56}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98D2C644-AEB8-4977-BAEC-B8C7B57C71C2}
+	EndGlobalSection
+EndGlobal
