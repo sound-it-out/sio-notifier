@@ -2,7 +2,7 @@
 
 namespace SIO.Infrastructure.Azure.Notifications
 {
-    internal interface INotificationHubClientFactory
+    public interface INotificationHubClientFactory
     {
         INotificationHubClient Create();
     }

@@ -12,6 +12,7 @@ using SIO.Domain.Translation.Events;
 using SIO.Infrastructure.Azure.Extensions;
 using SIO.Infrastructure.Extensions;
 using SIO.Migrations.DbContexts;
+using SIO.Migrations.Extensions;
 
 namespace SIO.Notifier
 {
@@ -61,7 +62,8 @@ namespace SIO.Notifier
 
             services.AddInfrastructure()
                 .AddAzureConfigurations(_configuration)
-                .AddAzureInfrastructure();
+                .AddAzureInfrastructure()
+                .AddMigrations();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

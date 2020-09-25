@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
 namespace SIO.Migrations.Entities
@@ -17,6 +18,8 @@ namespace SIO.Migrations.Entities
         public string Template { get; set; }
         public string Payload { get; set; }
         public string TagsValue { get; set; }
+
+        [NotMapped]
         public IEnumerable<string> Tags 
         {
             get

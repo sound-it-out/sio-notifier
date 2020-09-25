@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>53a36d1f-e062-4556-adbb-3eb449fbcd2f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,7 +11,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="OpenEventSourcing" Version="0.4.0" />
     <PackageReference Include="OpenEventSourcing.Azure.ServiceBus" Version="0.4.0" />
     <PackageReference Include="OpenEventSourcing.EntityFrameworkCore" Version="0.4.0" />

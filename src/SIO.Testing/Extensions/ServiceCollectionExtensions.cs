@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using OpenEventSourcing.EntityFrameworkCore.InMemory;
@@ -24,6 +25,13 @@ namespace SIO.Testing.Extensions
             source.AddScoped<InMemoryEventBus>();
             source.AddScoped<IEventBusPublisher, InMemoryEventBus>(sp => sp.GetRequiredService<InMemoryEventBus>());
             source.AddScoped<IEventBusConsumer, InMemoryEventBus>(sp => sp.GetRequiredService<InMemoryEventBus>());
+            return source;
+        }
+
+        public static IServiceCollection AddInMemoryDiagnostics(this IServiceCollection source)
+        {
+            source.AddSingleton<DiagnosticSource, InMemoryDiagnosticSource>();
+            source.AddSingleton<DiagnosticListener>(new InMemoryDiagnosticListener(nameof(InMemoryDiagnosticSource)));
             return source;
         }
     }

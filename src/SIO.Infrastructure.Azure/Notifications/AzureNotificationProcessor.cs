@@ -6,7 +6,7 @@ using SIO.Infrastructure.Notifications;
 
 namespace SIO.Infrastructure.Azure.Notifications
 {
-    internal abstract class AzureNotificationProcessor : INotificationProcessor
+    public abstract class AzureNotificationProcessor : INotificationProcessor
     {
         protected readonly INotificationHubClient _notificationHubClient;
         protected readonly INotificationMessageBuilder _notificationMessageBuilder;

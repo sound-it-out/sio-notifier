@@ -8,7 +8,7 @@ namespace SIO.Infrastructure.Azure.Extensions
     {
         public static IServiceCollection AddAzureInfrastructure(this IServiceCollection source)
         {
-            return source.AddAzureNotifications();
+            return source.AddAzureNotifications();            
         }
 
         public static IServiceCollection AddAzureConfigurations(this IServiceCollection source, IConfiguration configuration)
@@ -25,9 +25,14 @@ namespace SIO.Infrastructure.Azure.Extensions
 
         public static IServiceCollection AddAzureNotifications(this IServiceCollection source)
         {
+            source.AddScoped<AndroidNotificationProcessor>();
+            source.AddScoped<IosNotificationProcessor>();
+            source.AddScoped<WindowsNotificationProcessor>();
+
             source.AddHostedService<AndroidNotifier>();
             source.AddHostedService<IosNotifier>();
             source.AddHostedService<WindowsNotifier>();
+            source.AddSingleton<INotificationHubClientFactory, NotificationHubClientFactory>();
 
             return source;
         }

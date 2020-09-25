@@ -29,11 +29,15 @@ namespace SIO.Infrastructure.Notifications
         public NotificationMessageBuilder(
             IRazorViewEngine viewEngine,
             ITempDataProvider tempDataProvider,
-            IServiceProvider serviceProvider)
+            IServiceProvider serviceProvider,
+            IEventDeserializer eventDeserializer,
+            IEventTypeCache eventTypeCache)
         {
             _viewEngine = viewEngine;
             _tempDataProvider = tempDataProvider;
             _serviceProvider = serviceProvider;
+            _eventDeserializer = eventDeserializer;
+            _eventTypeCache = eventTypeCache;
         }
 
         public async Task<string> BuildAsync(Notification notification)
@@ -48,7 +52,7 @@ namespace SIO.Infrastructure.Notifications
         {
             var actionContext = GetActionContext();
 
-            var viewEngineResult = _viewEngine.FindView(actionContext, name, false);
+            var viewEngineResult = _viewEngine.FindView(actionContext, $"/Views/Notifications/{name}", false);
 
             if (!viewEngineResult.Success)
             {

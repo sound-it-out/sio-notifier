@@ -8,7 +8,7 @@ using SIO.Migrations.Entities;
 
 namespace SIO.Infrastructure.Azure.Notifications
 {
-    internal sealed class AndroidNotificationProcessor : AzureNotificationProcessor
+    public sealed class AndroidNotificationProcessor : AzureNotificationProcessor
     {
         private readonly ISIONotifierDbContextFactory _contextFactory;
         public AndroidNotificationProcessor(INotificationHubClientFactory notificationHubClientFactory, INotificationMessageBuilder notificationMessageBuilder, IEventPublisher eventPublisher, ISIONotifierDbContextFactory contextFactory) : base(notificationHubClientFactory, notificationMessageBuilder, eventPublisher)
