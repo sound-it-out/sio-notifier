@@ -18,13 +18,13 @@ jobs:
         dotnet-version: 3.1.101
 
     # Restore projects
-    - name: Restore Example project
-      run: dotnet restore "src/Example/Example.csproj"
+    - name: Restore projects
+      run: dotnet restore
 
     # Build projects
-    - name: Build Example project
-      run: dotnet build "src/Example/Example.csproj" --configuration Release --no-restore
+    - name: Build projects
+      run: dotnet build --configuration Release --no-restore
 
-    # Test projects
-    - name: Test
-      run: dotnet test "tests/Example.Tests/Example.Tests.csproj" --no-restore --verbosity normal
+    # Run test projects
+    - name: Run test projects
+      run: dotnet test SIO-Notifier.sln --configuration Release --no-restore --no-build --verbosity normal --filter Category=Unit -- xunit.parallelizeAssembly=true
