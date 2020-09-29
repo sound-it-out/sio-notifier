@@ -12,9 +12,6 @@ namespace SIO.Migrations.Extensions
         {
             using (var scope = host.Services.CreateScope())
             {
-                using (var context = scope.ServiceProvider.GetRequiredService<OpenEventSourcingDbContext>())
-                    await context.Database.MigrateAsync();
-
                 using (var context = scope.ServiceProvider.GetRequiredService<OpenEventSourcingProjectionDbContext>())
                     await context.Database.MigrateAsync();
             }
