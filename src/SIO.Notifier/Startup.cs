@@ -9,6 +9,7 @@ using OpenEventSourcing.EntityFrameworkCore.SqlServer;
 using OpenEventSourcing.Extensions;
 using OpenEventSourcing.Serialization.Json.Extensions;
 using SIO.Domain.Extensions;
+using SIO.Domain.Projections.Extensions;
 using SIO.Domain.Translation.Events;
 using SIO.Infrastructure.Azure.Extensions;
 using SIO.Infrastructure.Extensions;
@@ -55,7 +56,11 @@ namespace SIO.Notifier
             services.AddInfrastructure()
                 .AddAzureConfigurations(_configuration)
                 .AddAzureInfrastructure()
-                .AddDomain();
+                .AddDomain()
+                .AddProjections();
+
+            services.AddMvcCore();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using SIO.Infrastructure.Azure.Notifications;
 using SIO.Infrastructure.Azure.Notifications.Processors;
+using SIO.Infrastructure.Notifications.Processors;
 
 namespace SIO.Infrastructure.Azure.Extensions
 {
@@ -26,9 +27,9 @@ namespace SIO.Infrastructure.Azure.Extensions
 
         public static IServiceCollection AddAzureNotifications(this IServiceCollection source)
         {
-            source.AddScoped<AndroidNotificationProcessor>();
-            source.AddScoped<IosNotificationProcessor>();
-            source.AddScoped<WindowsNotificationProcessor>();
+            source.AddTransient<IAndroidNotificationProcessor, AndroidNotificationProcessor>();
+            source.AddTransient<IIosNotificationProcessor, IosNotificationProcessor>();
+            source.AddTransient<IWindowsNotificationProcessor, WindowsNotificationProcessor>();
             source.AddSingleton<INotificationHubClientFactory, NotificationHubClientFactory>();
 
             return source;

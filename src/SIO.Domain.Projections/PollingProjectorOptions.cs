@@ -2,6 +2,6 @@
 {
     public class PollingProjectorOptions
     {
-        public int Interval { get; set; } = 250;
+        public int Interval { get; set; } = 0;
     }
 }

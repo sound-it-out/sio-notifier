@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OpenEventSourcing.Commands;
 using OpenEventSourcing.EntityFrameworkCore.DbContexts;
 using SIO.Domain.Notifications.Projections;
 
@@ -17,6 +18,7 @@ namespace SIO.Domain.Notifications.Notifiers
         private readonly ILogger<BackgroundNotifier> _logger;
         private readonly IServiceScope _scope;
         private readonly NotificationType _notificationType;
+        protected readonly ICommandDispatcher _commandDispatcher;
 
         private Task _executingTask;
 
@@ -32,6 +34,7 @@ namespace SIO.Domain.Notifications.Notifiers
             _logger = logger;
             _notificationType = notificationType;
             _scope = serviceScopeFactory.CreateScope();
+            _commandDispatcher = _scope.ServiceProvider.GetRequiredService<ICommandDispatcher>();
         }
 
         public Task StartAsync(CancellationToken cancellationToken)

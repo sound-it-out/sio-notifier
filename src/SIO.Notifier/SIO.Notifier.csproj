@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SIO.Domain.Projections\SIO.Domain.Projections.csproj" />
     <ProjectReference Include="..\SIO.Domain\SIO.Domain.csproj" />
     <ProjectReference Include="..\SIO.Infrastructure.Azure\SIO.Infrastructure.Azure.csproj" />
     <ProjectReference Include="..\SIO.Infrastructure\SIO.Infrastructure.csproj" />

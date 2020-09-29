@@ -15,6 +15,7 @@ namespace SIO.Domain.Extensions
             source.AddHostedService<IosNotifier>();
             source.AddHostedService<WindowsNotifier>();
 
+            source.AddTransient<IRazorViewBuilder, RazorViewBuilder>();
             source.AddTransient<IAndroidNotificationMessageBuilder, AndroidNotificationMessageBuilder>();
             source.AddTransient<IIosNotificationMessageBuilder, IosNotificationMessageBuilder>();
             source.AddTransient<IWindowsNotificationMessageBuilder, WindowsNotificationMessageBuilder>();
