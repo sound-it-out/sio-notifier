@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SIO.Migrations.DbContexts;
-using System.Threading.Tasks;
+using OpenEventSourcing.EntityFrameworkCore.DbContexts;
 
 namespace SIO.Migrations.Extensions
 {
@@ -13,7 +12,10 @@ namespace SIO.Migrations.Extensions
         {
             using (var scope = host.Services.CreateScope())
             {
-                using (var context = scope.ServiceProvider.GetRequiredService<SIONotifierDbContext>())
+                using (var context = scope.ServiceProvider.GetRequiredService<OpenEventSourcingDbContext>())
+                    await context.Database.MigrateAsync();
+
+                using (var context = scope.ServiceProvider.GetRequiredService<OpenEventSourcingProjectionDbContext>())
                     await context.Database.MigrateAsync();
             }
 

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using OpenEventSourcing.EntityFrameworkCore.InMemory;
 using OpenEventSourcing.Events;
 using OpenEventSourcing.Extensions;
-using SIO.Migrations.DbContexts;
 using SIO.Testing.Stubs;
 
 namespace SIO.Testing.Extensions
@@ -14,7 +14,13 @@ namespace SIO.Testing.Extensions
     {
         public static IServiceCollection AddInMemoryDatabase(this IServiceCollection source)
         {
-            source.AddDbContext<SIONotifierDbContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
+            source.AddOpenEventSourcing()
+                .AddEntityFrameworkCoreInMemory();
+            return source;
+        }
+
+        public static IServiceCollection AddInMemoryDatabase(this IServiceCollection source, InMemoryDatabaseRoot databaseRoot)
+        {
             source.AddOpenEventSourcing()
                 .AddEntityFrameworkCoreInMemory();
             return source;

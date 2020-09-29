@@ -8,11 +8,10 @@ using OpenEventSourcing.Azure.ServiceBus.Extensions;
 using OpenEventSourcing.EntityFrameworkCore.SqlServer;
 using OpenEventSourcing.Extensions;
 using OpenEventSourcing.Serialization.Json.Extensions;
+using SIO.Domain.Extensions;
 using SIO.Domain.Translation.Events;
 using SIO.Infrastructure.Azure.Extensions;
 using SIO.Infrastructure.Extensions;
-using SIO.Migrations.DbContexts;
-using SIO.Migrations.Extensions;
 
 namespace SIO.Notifier
 {
@@ -53,17 +52,10 @@ namespace SIO.Notifier
                 .AddEvents()
                 .AddJsonSerializers();
 
-            services.AddDbContext<SIONotifierDbContext>(options =>
-                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"), sql =>
-                {
-                    sql.EnableRetryOnFailure();
-                    sql.MigrationsAssembly("SIO.Migrations");
-                }));
-
             services.AddInfrastructure()
                 .AddAzureConfigurations(_configuration)
                 .AddAzureInfrastructure()
-                .AddMigrations();
+                .AddDomain();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

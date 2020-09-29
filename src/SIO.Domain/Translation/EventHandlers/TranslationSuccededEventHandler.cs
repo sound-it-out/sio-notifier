@@ -26,12 +26,31 @@ namespace SIO.Domain.Translation.EventHandlers
 
         public async Task HandleAsync(TranslationSucceded @event)
         {
-            await _commandDispatcher.DispatchAsync(new QueueNotificationCommand(aggregateId: Guid.NewGuid(),
-                correlationId: @event.Id,
-                version: 0,
-                userId: @event.UserId,
-                payload: _eventSerializer.Serialize(@event),
-                template: nameof(TranslationSucceded))
+            var payload = _eventSerializer.Serialize(@event);
+            var template = nameof(TranslationSucceded);
+
+            await Task.WhenAll(
+                _commandDispatcher.DispatchAsync(new QueueAndroidNotificationCommand(aggregateId: Guid.NewGuid(),
+                    correlationId: @event.Id,
+                    version: 0,
+                    userId: @event.UserId,
+                    payload: payload,
+                    template: template
+                )),
+                _commandDispatcher.DispatchAsync(new QueueIosNotificationCommand(aggregateId: Guid.NewGuid(),
+                    correlationId: @event.Id,
+                    version: 0,
+                    userId: @event.UserId,
+                    payload: payload,
+                    template: template
+                )),
+                _commandDispatcher.DispatchAsync(new QueueWindowsNotificationCommand(aggregateId: Guid.NewGuid(),
+                    correlationId: @event.Id,
+                    version: 0,
+                    userId: @event.UserId,
+                    payload: payload,
+                    template: template
+                ))
             );
         }
     }

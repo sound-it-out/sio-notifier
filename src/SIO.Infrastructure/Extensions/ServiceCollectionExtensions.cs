@@ -11,7 +11,6 @@ namespace SIO.Infrastructure.Extensions
             source.AddHostedService<EventConsumer>();
             source.AddTransient<IEventPublisher, EventPublisher>();
             source.AddTransient<ISIOEventStore, SIOEventStore>();
-            source.AddTransient<INotificationMessageBuilder, NotificationMessageBuilder>();
             return source;
         }
     }
