@@ -8,7 +8,7 @@ using SIO.Domain.Notifications.Projections;
 
 namespace SIO.Domain.Notifications.Notifiers
 {
-    internal sealed class IosNotifier : BackgroundNotifier
+    public sealed class IosNotifier : BackgroundNotifier
     {
         public IosNotifier(ILogger<IosNotifier> logger, 
             IServiceScopeFactory serviceScopeFactory) : base(logger, serviceScopeFactory, NotificationType.Windows)

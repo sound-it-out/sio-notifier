@@ -2,13 +2,12 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using OpenEventSourcing.Commands;
 using SIO.Domain.Notifications.Commands;
 using SIO.Domain.Notifications.Projections;
 
 namespace SIO.Domain.Notifications.Notifiers
 {
-    internal sealed class WindowsNotifier : BackgroundNotifier
+    public sealed class WindowsNotifier : BackgroundNotifier
     {
         public WindowsNotifier(ILogger<IosNotifier> logger, 
             IServiceScopeFactory serviceScopeFactory) : base(logger, serviceScopeFactory, NotificationType.Windows)

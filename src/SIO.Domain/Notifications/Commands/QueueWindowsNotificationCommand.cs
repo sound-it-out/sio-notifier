@@ -8,7 +8,7 @@ namespace SIO.Domain.Notifications.Commands
         public string Payload { get; set; }
         public string Template { get; set; }
 
-        public QueueWindowsNotificationCommand(Guid aggregateId, Guid correlationId, int version, string userId, string payload, string template) : base(aggregateId, correlationId, version, userId)
+        public QueueWindowsNotificationCommand(Guid aggregateId, Guid correlationId, string userId, string payload, string template) : base(aggregateId, correlationId, 0, userId)
         {
             Payload = payload;
             Template = template;

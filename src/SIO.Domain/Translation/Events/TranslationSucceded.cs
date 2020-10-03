@@ -1,34 +1,20 @@
 ﻿using System;
-using OpenEventSourcing.Commands;
+using Newtonsoft.Json;
 using OpenEventSourcing.Events;
-using OpenEventSourcing.Extensions;
 
 namespace SIO.Domain.Translation.Events
 {
-    public class TranslationSucceded : IEvent
+    public class TranslationSucceded : Event
     {
-        public Guid Id { get; }
-        public Guid AggregateId { get; }
-        public Guid? CorrelationId { get; }
-        public Guid? CausationId { get; }
-        public DateTimeOffset Timestamp { get; }
-        public int Version { get; }
-        public string UserId { get; }
-
-        public TranslationSucceded(Guid aggregateId, int version, Guid? correlationId, Guid? causationId, string userId)
+        public TranslationSucceded(Guid aggregateId, int version) : base(aggregateId, version)
         {
-            Id = Guid.NewGuid().ToSequentialGuid();
-            AggregateId = aggregateId;
-            CorrelationId = correlationId;
-            CausationId = causationId;
-            Timestamp = DateTimeOffset.UtcNow;
-            Version = version;
-            UserId = userId;
         }
 
-        public void UpdateFrom(ICommand command)
+        [JsonConstructor]
+        public TranslationSucceded(Guid aggregateId, Guid correlationId, Guid userId, int version) : base(aggregateId, version)
         {
-            throw new NotImplementedException();
+            CorrelationId = correlationId;
+            UserId = userId.ToString();
         }
     }
 }

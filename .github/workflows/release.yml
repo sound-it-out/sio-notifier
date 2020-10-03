@@ -22,8 +22,8 @@ jobs:
     - name: Build projects
       run: dotnet build --configuration Release --no-restore
 
-    # Run test projects
-    - name: Run test projects
+    # Test projects
+    - name: Test projects
       run: dotnet test SIO-Notifier.sln --configuration Release --no-restore --no-build --verbosity normal -- xunit.parallelizeAssembly=true
       env: 
         SIO_Azure__Notifications__ConnectionString: ${{ secrets.Azure_Notifications_ConnectionString }}

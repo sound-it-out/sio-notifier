@@ -26,6 +26,7 @@ namespace SIO.Domain.Notifications.Aggregates
 
             Attempts = state.Attempts;
             Payload = state.Payload;
+            Template = state.Template;
             Status = state.Status;
             Type = state.Type;
             Tags = state.Tags;

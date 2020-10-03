@@ -32,21 +32,18 @@ namespace SIO.Domain.Translation.EventHandlers
             await Task.WhenAll(
                 _commandDispatcher.DispatchAsync(new QueueAndroidNotificationCommand(aggregateId: Guid.NewGuid(),
                     correlationId: @event.Id,
-                    version: 0,
                     userId: @event.UserId,
                     payload: payload,
                     template: template
                 )),
                 _commandDispatcher.DispatchAsync(new QueueIosNotificationCommand(aggregateId: Guid.NewGuid(),
                     correlationId: @event.Id,
-                    version: 0,
                     userId: @event.UserId,
                     payload: payload,
                     template: template
                 )),
                 _commandDispatcher.DispatchAsync(new QueueWindowsNotificationCommand(aggregateId: Guid.NewGuid(),
                     correlationId: @event.Id,
-                    version: 0,
                     userId: @event.UserId,
                     payload: payload,
                     template: template

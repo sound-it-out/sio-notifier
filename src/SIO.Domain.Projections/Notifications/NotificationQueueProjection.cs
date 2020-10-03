@@ -7,7 +7,7 @@ using SIO.Domain.Notifications.Projections;
 
 namespace SIO.Domain.Projections.Notifications
 {
-    internal sealed class NotificationQueueProjection : Projection<NotificationQueue>
+    public sealed class NotificationQueueProjection : Projection<NotificationQueue>
     {
         private readonly IProjectionDbContextFactory _projectionDbContextFactory;
         public NotificationQueueProjection(IProjectionWriter<NotificationQueue> writer, IProjectionDbContextFactory projectionDbContextFactory) : base(writer)
@@ -93,6 +93,7 @@ namespace SIO.Domain.Projections.Notifications
                     {
                         n.Attempts++;
                         n.Status = NotificationStatus.Failed;
+                        n.Version = @event.Version;
                     });
                 }
             }

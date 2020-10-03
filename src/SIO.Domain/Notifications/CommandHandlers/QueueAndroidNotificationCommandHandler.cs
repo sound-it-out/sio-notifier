@@ -50,7 +50,7 @@ namespace SIO.Domain.Notifications.CommandHandlers
 
             events = events.ToList();
 
-            await _aggregateRepository.SaveAsync(aggregate, 0);
+            await _aggregateRepository.SaveAsync(aggregate, command.Version);
             await _eventBusPublisher.PublishAsync(events);
         }
     }

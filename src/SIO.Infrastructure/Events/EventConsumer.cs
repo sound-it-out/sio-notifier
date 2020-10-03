@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SIO.Infrastructure.Events
 {
-    internal class EventConsumer : IHostedService
+    internal sealed class EventConsumer : IHostedService
     {
         private readonly IServiceProvider _serviceProvider;
 

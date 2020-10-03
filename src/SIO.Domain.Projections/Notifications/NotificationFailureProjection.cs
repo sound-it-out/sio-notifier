@@ -7,7 +7,7 @@ using SIO.Domain.Notifications.Projections;
 
 namespace SIO.Domain.Projections.Notifications
 {
-    internal sealed class NotificationFailureProjection : Projection<NotificationFailure>
+    public sealed class NotificationFailureProjection : Projection<NotificationFailure>
     {
         public NotificationFailureProjection(IProjectionWriter<NotificationFailure> writer) : base(writer)
         {

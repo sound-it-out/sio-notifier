@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <UserSecretsId>6640d7ac-1573-4a91-8cbb-01ba5a96d482</UserSecretsId>
+    <UserSecretsId>dca727b6-618a-4500-ab83-4d4e037de169</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,18 +22,22 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.8" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.8" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
-    <PackageReference Include="OpenEventSourcing.Serialization.Json" Version="0.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SIO.Infrastructure.Azure\SIO.Infrastructure.Azure.csproj" />
     <ProjectReference Include="..\..\src\SIO.Testing\SIO.Testing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Notifications\Processors\AndroidNotificationProcessor\" />
+    <Folder Include="Notifications\Processors\IosNotificationProcessor\" />
+    <Folder Include="Notifications\Processors\WindowsNotificationProcessor\" />
   </ItemGroup>
 
 </Project>

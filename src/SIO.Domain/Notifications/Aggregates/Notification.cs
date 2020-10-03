@@ -18,9 +18,9 @@ namespace SIO.Domain.Notifications.Aggregates
 
         public override NotificationState GetState() => new NotificationState(_state);
 
-        public void QueueForAndroid(Guid aggregateId, string payload, string template, IEnumerable<string> tags) => Apply(new AndroidNotificationQueued(aggregateId, Version.GetValueOrDefault(), template, payload, tags));
-        public void QueueForIos(Guid aggregateId, string payload, string template, IEnumerable<string> tags) => Apply(new IosNotificationQueued(aggregateId, Version.GetValueOrDefault(), template, payload, tags));
-        public void QueueForWindows(Guid aggregateId, string payload, string template, IEnumerable<string> tags) => Apply(new WindowsNotificationQueued(aggregateId, Version.GetValueOrDefault(), template, payload, tags));
+        public void QueueForAndroid(Guid aggregateId, string payload, string template, IEnumerable<string> tags) => Apply(new AndroidNotificationQueued(aggregateId, Version.GetValueOrDefault() + 1, template, payload, tags));
+        public void QueueForIos(Guid aggregateId, string payload, string template, IEnumerable<string> tags) => Apply(new IosNotificationQueued(aggregateId, Version.GetValueOrDefault() + 1, template, payload, tags));
+        public void QueueForWindows(Guid aggregateId, string payload, string template, IEnumerable<string> tags) => Apply(new WindowsNotificationQueued(aggregateId, Version.GetValueOrDefault() + 1, template, payload, tags));
         public void MarkAsFail(string error) => Apply(new NotificationFailed(Id.Value, Version.GetValueOrDefault() + 1, error));
         public void MarkAsSuccess() => Apply(new NotificationSucceded(Id.Value, Version.GetValueOrDefault() + 1));
 
@@ -29,7 +29,7 @@ namespace SIO.Domain.Notifications.Aggregates
             //if(Id.HasValue)
             // throw exception
 
-            Id = @event.Id;
+            Id = @event.AggregateId;
             _state.Attempts = 0;
             _state.Payload = @event.Payload;
             _state.Template = @event.Template;
@@ -44,9 +44,10 @@ namespace SIO.Domain.Notifications.Aggregates
             //if(Id.HasValue)
             // throw exception
 
-            Id = @event.Id;
+            Id = @event.AggregateId;
             _state.Attempts = 0;
             _state.Payload = @event.Payload;
+            _state.Template = @event.Template;
             _state.Status = NotificationStatus.Pending;
             _state.Tags = @event.Tags;
             _state.Type = NotificationType.Ios;
@@ -58,9 +59,10 @@ namespace SIO.Domain.Notifications.Aggregates
             //if(Id.HasValue)
             // throw exception
 
-            Id = @event.Id;
+            Id = @event.AggregateId;
             _state.Attempts = 0;
             _state.Payload = @event.Payload;
+            _state.Template = @event.Template;
             _state.Status = NotificationStatus.Pending;
             _state.Tags = @event.Tags;
             _state.Type = NotificationType.Windows;
