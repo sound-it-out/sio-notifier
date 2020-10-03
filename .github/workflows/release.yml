@@ -4,7 +4,7 @@ on:
   push:
     branches: [ release/* ]
 env:
-  AZURE_WEBAPP_PACKAGE_NAME: "../published"
+  AZURE_WEBAPP_PACKAGE_NAME: "publish"
   NETCORE_VERSION: "3.1.101"
 jobs:
   release:
@@ -33,7 +33,7 @@ jobs:
         SIO_Azure__Notifications__HubPath: ${{ secrets.Azure_Notifications_HubPath }}
 
     # Publish project
-    - name: Test projects
+    - name: Publish project
       run: dotnet publish src/SIO.Notifier/SIO.Notifier.csproj --configuration Release --output ${{ env.AZURE_WEBAPP_PACKAGE_NAME }}
 
     - name: Deploy to Azure
@@ -41,4 +41,4 @@ jobs:
       with:
         app-name: ${{ secrets.AZURE_PROD_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_PROD_WEBAPP_PUBLISH_PROFILE }}
-        package: ./published
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_NAME }}
